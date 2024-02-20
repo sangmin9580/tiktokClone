@@ -8,7 +8,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});
 
-  void loginTap(BuildContext context) {
+  void _loginTap(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => const LoginScreen(),
@@ -72,7 +72,7 @@ class SignupScreen extends StatelessWidget {
             ),
             Gaps.h2,
             GestureDetector(
-              onTap: () => loginTap(context),
+              onTap: () => _loginTap(context),
               child: const Text(
                 "Log in",
                 style: TextStyle(

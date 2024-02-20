@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutterpractice/constants/gaps.dart';
 import 'package:flutterpractice/constants/sizes.dart';
+import 'package:flutterpractice/features/authentication/user_name_screen.dart';
 import 'package:flutterpractice/features/authentication/widgets/auth_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
-  void signUpTap(BuildContext context) {
+  void _signUpTap(BuildContext context) {
     Navigator.of(context).pop();
+  }
+
+  void _onEmailTap(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const UsernameScreen(),
+      ),
+    );
   }
 
   @override
@@ -37,9 +47,12 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               Gaps.v40,
-              const AuthButton(
-                faIcon: FontAwesomeIcons.user,
-                text: "Use Phone / email / username",
+              GestureDetector(
+                onTap: () => _onEmailTap(context),
+                child: const AuthButton(
+                  faIcon: FontAwesomeIcons.user,
+                  text: "Use Phone / email / username",
+                ),
               ),
               const AuthButton(
                 faIcon: FontAwesomeIcons.facebook,
@@ -60,7 +73,7 @@ class LoginScreen extends StatelessWidget {
             const Text("Don't have an account?"),
             Gaps.h2,
             GestureDetector(
-              onTap: () => signUpTap(context),
+              onTap: () => _signUpTap(context),
               child: const Text(
                 "Sign up",
                 style: TextStyle(

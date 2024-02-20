@@ -21,6 +21,7 @@ class App extends StatelessWidget {
         scheme: FlexScheme.sakura,
         surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
         blendLevel: 7,
+
         subThemesData: const FlexSubThemesData(
           blendOnLevel: 10,
           blendOnColors: false,
@@ -29,13 +30,16 @@ class App extends StatelessWidget {
           alignedDropdown: true,
           useInputDecoratorThemeInDialogs: true,
         ),
+
         textTheme: const TextTheme(
-            titleLarge: TextStyle(
-              fontWeight: FontWeight.w900,
-            ),
-            titleSmall: TextStyle(
-              fontWeight: FontWeight.bold,
-            )),
+          titleLarge: TextStyle(
+            fontWeight: FontWeight.w900,
+          ),
+          titleSmall: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+
         visualDensity: FlexColorScheme.comfortablePlatformDensity,
         useMaterial3: true,
         swapLegacyOnMaterial3: true,
