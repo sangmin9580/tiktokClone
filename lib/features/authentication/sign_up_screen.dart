@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterpractice/constants/gaps.dart';
 import 'package:flutterpractice/constants/sizes.dart';
+import 'package:flutterpractice/features/authentication/email_screen.dart';
 import 'package:flutterpractice/features/authentication/login_screen.dart';
 import 'package:flutterpractice/features/authentication/widgets/auth_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -12,6 +13,15 @@ class SignupScreen extends StatelessWidget {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => const LoginScreen(),
+      ),
+    );
+  }
+
+  void _onEmailTap(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const EmailScreen(),
       ),
     );
   }
@@ -42,9 +52,12 @@ class SignupScreen extends StatelessWidget {
                 ),
               ),
               Gaps.v40,
-              const AuthButton(
-                faIcon: FontAwesomeIcons.user,
-                text: "Use Phone or email",
+              GestureDetector(
+                onTap: () => _onEmailTap(context),
+                child: const AuthButton(
+                  faIcon: FontAwesomeIcons.user,
+                  text: "Use Phone or email",
+                ),
               ),
               const AuthButton(
                 faIcon: FontAwesomeIcons.facebook,

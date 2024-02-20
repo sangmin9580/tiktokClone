@@ -1,6 +1,8 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterpractice/features/authentication/sign_up_screen.dart';
+
+import 'package:flutterpractice/onboarding/interests_screen.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
@@ -67,7 +69,7 @@ class App extends StatelessWidget {
 // to let the device system mode control the theme mode:
 // themeMode: ThemeMode.system,
 
-      home: const SignupScreen(),
+      home: InterestsScreen(),
     );
   }
 }

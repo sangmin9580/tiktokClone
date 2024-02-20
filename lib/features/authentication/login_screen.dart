@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutterpractice/constants/gaps.dart';
 import 'package:flutterpractice/constants/sizes.dart';
-import 'package:flutterpractice/features/authentication/user_name_screen.dart';
+import 'package:flutterpractice/features/authentication/login_form_screen.dart';
+
 import 'package:flutterpractice/features/authentication/widgets/auth_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -12,11 +13,11 @@ class LoginScreen extends StatelessWidget {
     Navigator.of(context).pop();
   }
 
-  void _onEmailTap(BuildContext context) {
+  void _onLoginFormTap(BuildContext context) {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => const UsernameScreen(),
+        builder: (context) => const LoginFormScreen(),
       ),
     );
   }
@@ -48,7 +49,7 @@ class LoginScreen extends StatelessWidget {
               ),
               Gaps.v40,
               GestureDetector(
-                onTap: () => _onEmailTap(context),
+                onTap: () => _onLoginFormTap(context),
                 child: const AuthButton(
                   faIcon: FontAwesomeIcons.user,
                   text: "Use Phone / email / username",
