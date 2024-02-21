@@ -69,7 +69,7 @@ class App extends StatelessWidget {
 // to let the device system mode control the theme mode:
 // themeMode: ThemeMode.system,
 
-      home: InterestsScreen(),
+      home: const InterestsScreen(),
     );
   }
 }

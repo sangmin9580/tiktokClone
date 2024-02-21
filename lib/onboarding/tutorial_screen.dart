@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterpractice/constants/gaps.dart';
 import 'package:flutterpractice/constants/sizes.dart';
+import 'package:flutterpractice/features/main_navigation/main_navigation_screen.dart';
 
 enum Direction { right, left }
 
@@ -17,6 +18,16 @@ class TutorialScreen extends StatefulWidget {
 class _TutorialScreenState extends State<TutorialScreen> {
   Direction _direction = Direction.right;
   Page _page = Page.first;
+
+  void _onNextTap() {
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const MainNavigationScreen(),
+      ),
+      (route) => false,
+    );
+  }
 
   void _onPanUpdate(DragUpdateDetails details) {
     if (details.delta.dx > 0) {
@@ -117,9 +128,9 @@ class _TutorialScreenState extends State<TutorialScreen> {
             ),
             opacity: _page == Page.first ? 0 : 1,
             child: CupertinoButton(
+              onPressed: _onNextTap,
               color: Colors.red.shade300,
               child: const Text("Next"),
-              onPressed: () {},
             ),
           ),
         ),
