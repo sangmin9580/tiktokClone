@@ -31,10 +31,12 @@ class _VideoTimelineScreenState extends State<VideoTimelineScreen> {
   }
 
   void _onVideoFinished() {
-    _pageController.nextPage(
-      duration: _scrollDuration,
-      curve: _scrollCurve,
-    );
+    return;
+    // 틱톡은 계속 똑같은걸 looping해서 Return으로 바꿈
+    // _pageController.nextPage(
+    //   duration: _scrollDuration,
+    //   curve: _scrollCurve,
+    // );
   }
 
   @override
@@ -43,19 +45,32 @@ class _VideoTimelineScreenState extends State<VideoTimelineScreen> {
     super.dispose();
   }
 
+  Future<void> _onRefresh() async {
+    Future.delayed(
+      const Duration(
+        seconds: 10,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        PageView.builder(
-          controller: _pageController,
-          itemBuilder: (context, index) => VideoPost(
-            onVideoFinished: _onVideoFinished,
-            index: index,
+        RefreshIndicator(
+          displacement: 50,
+          edgeOffset: 20,
+          onRefresh: _onRefresh,
+          child: PageView.builder(
+            controller: _pageController,
+            itemBuilder: (context, index) => VideoPost(
+              onVideoFinished: _onVideoFinished,
+              index: index,
+            ),
+            itemCount: _itemCount,
+            scrollDirection: Axis.vertical,
+            onPageChanged: _onPageChanged,
           ),
-          itemCount: _itemCount,
-          scrollDirection: Axis.vertical,
-          onPageChanged: _onPageChanged,
         ),
       ],
     );

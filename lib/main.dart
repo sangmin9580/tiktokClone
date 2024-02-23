@@ -34,6 +34,9 @@ class App extends StatelessWidget {
           titleLarge: TextStyle(
             fontWeight: FontWeight.w900,
           ),
+          titleMedium: TextStyle(
+            fontWeight: FontWeight.w900,
+          ),
           titleSmall: TextStyle(
             fontWeight: FontWeight.bold,
           ),
