@@ -3,6 +3,7 @@ import 'package:flutterpractice/constants/gaps.dart';
 
 import 'package:flutterpractice/features/main_navigation/widgets/nav_tab.dart';
 import 'package:flutterpractice/features/main_navigation/widgets/post_video_button.dart';
+import 'package:flutterpractice/features/videos/video_timeline_screen.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -50,15 +51,12 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print(_isHovered);
     return Scaffold(
       body: Stack(
         children: [
           Offstage(
             offstage: _currentIndex != 0,
-            child: const Center(
-              child: Text("Home"),
-            ),
+            child: const VideoTimelineScreen(),
           ),
           Offstage(
             offstage: _currentIndex != 1,

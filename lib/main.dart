@@ -1,9 +1,6 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
-
-import 'package:flutterpractice/onboarding/interests_screen.dart';
-
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutterpractice/features/main_navigation/main_navigation_screen.dart';
 
 void main() {
   runApp(const App());
@@ -46,7 +43,7 @@ class App extends StatelessWidget {
         useMaterial3: true,
         swapLegacyOnMaterial3: true,
         // To use the Playground font, add GoogleFonts package and uncomment
-        fontFamily: GoogleFonts.nanumGothic().fontFamily,
+        //fontFamily: GoogleFonts.nanumGothic().fontFamily,
       ),
       darkTheme: FlexThemeData.dark(
         scheme: FlexScheme.sakura,
@@ -69,7 +66,7 @@ class App extends StatelessWidget {
 // to let the device system mode control the theme mode:
 // themeMode: ThemeMode.system,
 
-      home: const InterestsScreen(),
+      home: const MainNavigationScreen(),
     );
   }
 }
