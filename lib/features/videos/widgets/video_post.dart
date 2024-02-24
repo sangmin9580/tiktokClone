@@ -83,6 +83,9 @@ class _VideoPostState extends State<VideoPost>
       print("Video ${widget.index} is ${info.visibleFraction * 100} visible ");
       _videoPlayerController.play();
     }
+    if (_videoPlayerController.value.isPlaying && info.visibleFraction == 0) {
+      _onTogglePause();
+    }
   }
 
   void _onTogglePause() {

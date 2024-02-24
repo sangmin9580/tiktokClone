@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterpractice/constants/gaps.dart';
+import 'package:flutterpractice/features/discover/discover_screen.dart';
 
 import 'package:flutterpractice/features/main_navigation/widgets/nav_tab.dart';
 import 'package:flutterpractice/features/main_navigation/widgets/post_video_button.dart';
@@ -15,7 +16,7 @@ class MainNavigationScreen extends StatefulWidget {
 }
 
 class _MainNavigationScreenState extends State<MainNavigationScreen> {
-  int _currentIndex = 0;
+  int _currentIndex = 1;
   bool _isHovered = false;
 
   void _onTap(int index) {
@@ -61,9 +62,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
           ),
           Offstage(
             offstage: _currentIndex != 1,
-            child: const Center(
-              child: Text("Search"),
-            ),
+            child: DiscoverScreen(),
           ),
           Offstage(
             offstage: _currentIndex != 3,
