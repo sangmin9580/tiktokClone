@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterpractice/constants/gaps.dart';
 import 'package:flutterpractice/features/discover/discover_screen.dart';
+import 'package:flutterpractice/features/inbox/inbox_screen.dart';
 
 import 'package:flutterpractice/features/main_navigation/widgets/nav_tab.dart';
 import 'package:flutterpractice/features/main_navigation/widgets/post_video_button.dart';
@@ -62,13 +63,11 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
           ),
           Offstage(
             offstage: _currentIndex != 1,
-            child: DiscoverScreen(),
+            child: const DiscoverScreen(),
           ),
           Offstage(
             offstage: _currentIndex != 3,
-            child: const Center(
-              child: Text("Inbox"),
-            ),
+            child: const InboxScreen(),
           ),
           Offstage(
             offstage: _currentIndex != 4,
