@@ -86,6 +86,7 @@ class _ActivityScreenState extends State<ActivityScreen>
       appBar: AppBar(
         centerTitle: true,
         title: Row(
+          mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             GestureDetector(

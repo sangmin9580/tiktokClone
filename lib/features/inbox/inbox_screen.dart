@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterpractice/constants/gaps.dart';
 import 'package:flutterpractice/constants/sizes.dart';
 import 'package:flutterpractice/features/inbox/activity_screen.dart';
+import 'package:flutterpractice/features/inbox/chats_screen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class InboxScreen extends StatelessWidget {
@@ -15,6 +16,15 @@ class InboxScreen extends StatelessWidget {
     );
   }
 
+  void _onDmpressed(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const ChatsScreen(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,11 +33,14 @@ class InboxScreen extends StatelessWidget {
           "inbox",
         ),
         centerTitle: true,
-        actions: const [
+        actions: [
           Row(
             children: [
-              FaIcon(
-                FontAwesomeIcons.paperPlane,
+              IconButton(
+                onPressed: () => _onDmpressed(context),
+                icon: const FaIcon(
+                  FontAwesomeIcons.paperPlane,
+                ),
               ),
               Gaps.h20,
             ],
