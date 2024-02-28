@@ -1,8 +1,7 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutterpractice/features/inbox/chat_detail_screen.dart';
-import 'package:flutterpractice/features/inbox/chats_screen.dart';
+import 'package:flutterpractice/features/main_navigation/main_navigation_screen.dart';
 
 void main() {
   runApp(const App());
@@ -71,7 +70,7 @@ class App extends StatelessWidget {
 // to let the device system mode control the theme mode:
 // themeMode: ThemeMode.system,
 
-      home: const ChatsScreen(),
+      home: const MainNavigationScreen(),
     );
   }
 }

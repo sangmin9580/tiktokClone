@@ -5,6 +5,7 @@ import 'package:flutterpractice/features/inbox/inbox_screen.dart';
 
 import 'package:flutterpractice/features/main_navigation/widgets/nav_tab.dart';
 import 'package:flutterpractice/features/main_navigation/widgets/post_video_button.dart';
+import 'package:flutterpractice/features/users/user_profile_screen.dart';
 import 'package:flutterpractice/features/videos/video_timeline_screen.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -17,7 +18,7 @@ class MainNavigationScreen extends StatefulWidget {
 }
 
 class _MainNavigationScreenState extends State<MainNavigationScreen> {
-  int _currentIndex = 1;
+  int _currentIndex = 4;
   bool _isHovered = false;
 
   void _onTap(int index) {
@@ -71,9 +72,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
           ),
           Offstage(
             offstage: _currentIndex != 4,
-            child: const Center(
-              child: Text("Profile"),
-            ),
+            child: const UserProfileScreen(),
           ),
         ],
       ),
