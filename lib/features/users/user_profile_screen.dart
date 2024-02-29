@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutterpractice/constants/gaps.dart';
 import 'package:flutterpractice/constants/sizes.dart';
+import 'package:flutterpractice/features/settings/settings_screen.dart';
 import 'package:flutterpractice/features/users/widgets/persistent_tab_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class UserProfileScreen extends StatelessWidget {
   const UserProfileScreen({super.key});
+
+  void _onTapSetting(BuildContext context) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const SettingScreen(),
+        ));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +27,7 @@ class UserProfileScreen extends StatelessWidget {
               SliverAppBar(
                 actions: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () => _onTapSetting(context),
                     icon: const FaIcon(
                       FontAwesomeIcons.gear,
                     ),
