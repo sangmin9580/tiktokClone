@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutterpractice/constants/breakpoints.dart';
+
 import 'package:flutterpractice/constants/gaps.dart';
 import 'package:flutterpractice/constants/sizes.dart';
 import 'package:flutterpractice/features/settings/settings_screen.dart';
@@ -145,7 +147,10 @@ class UserProfileScreen extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Container(
-                          width: MediaQuery.of(context).size.width * 0.33,
+                          width: MediaQuery.of(context).size.width * 0.33 >
+                                  Breakpoints.xl * 0.5
+                              ? Breakpoints.xl * 0.5
+                              : MediaQuery.of(context).size.width * 0.33,
                           padding: const EdgeInsets.symmetric(
                             vertical: 10,
                           ),
@@ -235,41 +240,46 @@ class UserProfileScreen extends StatelessWidget {
           },
           body: TabBarView(
             children: [
-              GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  childAspectRatio: 9 / 14,
-                  mainAxisSpacing: Sizes.size1,
-                  crossAxisSpacing: Sizes.size1,
-                  crossAxisCount: 3,
-                ),
-                itemBuilder: (context, index) => Stack(
-                  children: [
-                    Image.asset(
-                      "assets/images/image.jpg",
-                      fit: BoxFit.cover,
-                      height: double.infinity,
-                    ),
-                    const Positioned(
-                      bottom: 0,
-                      left: 5,
-                      child: Row(
-                        children: [
-                          FaIcon(
-                            FontAwesomeIcons.play,
-                            color: Colors.white,
-                            size: Sizes.size16,
-                          ),
-                          Gaps.h5,
-                          Text(
-                            "4.1M",
-                            style: TextStyle(
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
+              LayoutBuilder(
+                builder: (context, constraints) => GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      childAspectRatio: 9 / 14,
+                      mainAxisSpacing: Sizes.size1,
+                      crossAxisSpacing: Sizes.size1,
+                      crossAxisCount: constraints.maxWidth < 800
+                          ? 3
+                          : constraints.maxWidth > 1300
+                              ? 7
+                              : 5),
+                  itemBuilder: (context, index) => Stack(
+                    children: [
+                      Image.asset(
+                        "assets/images/image.jpg",
+                        fit: BoxFit.cover,
+                        height: double.infinity,
                       ),
-                    )
-                  ],
+                      Positioned(
+                        bottom: 0,
+                        left: 5,
+                        child: Row(
+                          children: [
+                            const FaIcon(
+                              FontAwesomeIcons.play,
+                              color: Colors.white,
+                              size: Sizes.size16,
+                            ),
+                            Gaps.h5,
+                            Text(
+                              "4.1M $constraints ",
+                              style: const TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
               const Center(

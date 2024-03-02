@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterpractice/constants/gaps.dart';
 import 'package:flutterpractice/constants/sizes.dart';
@@ -30,6 +31,7 @@ class _VideoPostState extends State<VideoPost>
   late final AnimationController _animationController;
   bool _isPaused = false;
   bool _wantSeeMore = false;
+  bool _isVolmeOff = true;
 
   final Duration _animationDuration = const Duration(
     milliseconds: 300,
@@ -50,7 +52,12 @@ class _VideoPostState extends State<VideoPost>
     // Video는 워낙 내용이 크다보니 어쩔 수 없음 무조건 이렇게 따로 initialize해야함
     // 반대로 TexteditingController는 이런과정이 필요 없음
     await _videoPlayerController.setLooping(true);
+    if (kIsWeb) {
+      _videoPlayerController.setVolume(0);
+    }
     _videoPlayerController.addListener(_onVideoChange);
+
+    setState(() {});
     // intistate가 먼저 build되지만, _initVideo()는 비동기함수라서, build함수보다 늦게
     // build될 수 있음. 그래서 build함수에게 initailze되면 setstate로 알려줘야함
     // await 함수는 해당 함수안에서 코드가 작성되지만, 큰 틀(init=>build함수)에서는 영향이 없음
@@ -81,7 +88,6 @@ class _VideoPostState extends State<VideoPost>
     if (info.visibleFraction == 1 &&
         !_isPaused &&
         !_videoPlayerController.value.isPlaying) {
-      print("Video ${widget.index} is ${info.visibleFraction * 100} visible ");
       _videoPlayerController.play();
     }
     if (_videoPlayerController.value.isPlaying && info.visibleFraction == 0) {
@@ -119,6 +125,16 @@ class _VideoPostState extends State<VideoPost>
       builder: (context) => const VideoComments(),
     );
     _onTogglePause();
+  }
+
+  void _onToggleVolume() {
+    _isVolmeOff = !_isVolmeOff;
+    if (!_isVolmeOff) {
+      _videoPlayerController.setVolume(1);
+    } else {
+      _videoPlayerController.setVolume(0);
+    }
+    setState(() {});
   }
 
   @override
@@ -231,6 +247,18 @@ class _VideoPostState extends State<VideoPost>
                   text: "Share",
                 )
               ],
+            ),
+          ),
+          Positioned(
+            top: 10,
+            right: 20,
+            child: GestureDetector(
+              onTap: _onToggleVolume,
+              child: FaIcon(
+                _isVolmeOff
+                    ? FontAwesomeIcons.volumeOff
+                    : FontAwesomeIcons.volumeHigh,
+              ),
             ),
           )
         ],

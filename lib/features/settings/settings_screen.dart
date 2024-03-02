@@ -79,12 +79,14 @@ class _SettingScreenState extends State<SettingScreen> {
                 context: context,
                 initialTime: TimeOfDay.now(),
               );
+              print(time);
               if (!mounted) return;
               final dateRange = await showDateRangePicker(
                 context: context,
                 firstDate: DateTime.now(),
                 lastDate: DateTime(2025),
               );
+              print(dateRange);
             },
           ),
           ListTile(

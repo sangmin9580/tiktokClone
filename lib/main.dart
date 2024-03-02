@@ -1,9 +1,18 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutterpractice/features/authentication/sign_up_screen.dart';
 
-import 'package:flutterpractice/features/main_navigation/main_navigation_screen.dart';
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  //App이 작동하기 전에 초기화시켜주는 것. 외부 리소스를 받아오면 해줘야함.
 
-void main() {
+  await SystemChrome.setPreferredOrientations(
+    [
+      DeviceOrientation.portraitUp,
+    ],
+  );
+
   runApp(const App());
 }
 
@@ -13,6 +22,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       // Theme config for FlexColorScheme version 7.3.x. Make sure you use
 // same or higher package version, but still same major version. If you
 // use a lower package version, some properties may not be supported.
@@ -70,7 +80,7 @@ class App extends StatelessWidget {
 // to let the device system mode control the theme mode:
 // themeMode: ThemeMode.system,
 
-      home: const MainNavigationScreen(),
+      home: const SignupScreen(),
     );
   }
 }
